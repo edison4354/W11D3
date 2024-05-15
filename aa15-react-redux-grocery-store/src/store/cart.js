@@ -3,8 +3,7 @@ const ADD_ITEM = 'ADD_ITEM'
 export const addItem = produceId => {
     return {
         type: ADD_ITEM,
-        id: produceId,
-        count: 1
+        id: produceId
     }
 }
 
@@ -14,11 +13,7 @@ export default function cartReducer(state = {}, action) {
 
     switch (action.type) {
         case ADD_ITEM: 
-            if (nextState[action.id] === action.produceId) {
-                nextState[action.count] += 1
-            } else {
-                nextState[action.id] = action.produceId
-            }
+            nextState[action.id] = { id: action.id, count: 1 }
             return nextState
         default: 
             return state
